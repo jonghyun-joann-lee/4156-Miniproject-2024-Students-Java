@@ -1,0 +1,57 @@
+<Bugs found by PMD>
+
+1. UnusedPrivateField
+    - Location: Department.java, line 117
+    - Avoid unused private fields such as 'departmentChair'.
+    - Fixing the getDepartmentChair() method to return the correct value (this.departmentChair) resolved this issue.
+
+2. ConstructorCallsOverridableMethod
+    - Location: MyFileDatabase.java, line 26
+    - Overridable method called during object construction: MyFileDatabase.deSerializeObjectFromFile()
+
+3. ReturnEmptyCollectionRatherThanNull
+    - Location: MyFileDatabase.java, line 54
+    - Return an empty collection rather than null.
+
+4. AvoidDuplicateLiterals
+    - Location: RouteController.java, line 40
+    - The String literal "deptCode" appears 15 times in this file; the first occurrence is on line 40
+
+5. UseLocaleWithCaseConversions
+    - Location: RouteController.java, line 45
+    - When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+
+6. AvoidDuplicateLiterals
+    - Location: RouteController.java, line 46
+    - The String literal "Department Not Found" appears 6 times in this file; the first occurrence is on line 46
+
+7. UseLocaleWithCaseConversions
+    - Location: RouteController.java, line 48
+    - When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+
+8. AvoidDuplicateLiterals
+    - Location: RouteController.java, line 74
+    - The String literal "courseCode" appears 10 times in this file; the first occurrence is on line 74
+
+9. AvoidDuplicateLiterals
+    - Location: RouteController.java, line 84
+    - The String literal "Course Not Found" appears 10 times in this file; the first occurrence is on line 84
+
+10. UnusedLocalVariable
+    - Location: RouteController.java, line 292
+    - Avoid unused local variables such as 'requestedCourse'.
+
+11. AvoidDuplicateLiterals
+    - Location: RouteController.java, line 428
+    - The String literal "Attributed was updated successfully." appears 4 times in this file; the first occurrence is on line 428
+
+
+<Other bugs found>
+
+In Department.java:
+
+1. Line 37, getNumberOfMajors() method returning a negated value of this.numberOfMajors
+2. Line 46, getDepartmentChair() method not returning the actual value of departmentChair but returning a string literal "this.departmentChair"
+3. Line 68, dropPersonFromMajor() method always decreasing numberOfMajors by one and not checking if it's greater than zero
+4. Line 109, toString() method not returning the actual value of the string representation but returning a string literal "result.toString()"
+
