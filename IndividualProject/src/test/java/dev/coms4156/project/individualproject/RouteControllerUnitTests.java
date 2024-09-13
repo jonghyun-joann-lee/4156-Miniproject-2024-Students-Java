@@ -147,7 +147,7 @@ public class RouteControllerUnitTests {
 
   @Test
   public void addMajorToDeptSuccessTest() {
-    ResponseEntity<?> response = testRouteController.addMajorToDept("COMS");
+    ResponseEntity<?> response = testRouteController.addMajorToDept("ECON");
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals("Attribute was updated successfully", response.getBody());
   }
@@ -161,13 +161,13 @@ public class RouteControllerUnitTests {
 
   @Test
   public void removeMajorFromDeptSuccessTest() {
-    ResponseEntity<?> response = testRouteController.removeMajorFromDept("COMS");
+    ResponseEntity<?> response = testRouteController.removeMajorFromDept("ELEN");
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals("Attribute was updated or is at minimum", response.getBody());  }
 
   @Test
   public void removeMajorFromDeptNotFoundTest() {
-    ResponseEntity<?> response = testRouteController.removeMajorFromDept("ACCT");
+    ResponseEntity<?> response = testRouteController.removeMajorFromDept("BIOL");
     assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     assertEquals("Department Not Found", response.getBody());
   }

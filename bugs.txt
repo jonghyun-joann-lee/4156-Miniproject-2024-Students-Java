@@ -1,4 +1,4 @@
-<Bugs found by PMD>
+<Bugs found by PMD and fixed>
 
 1. UnusedPrivateField
     - Location: Department.java, line 117
@@ -16,39 +16,47 @@
     - Fixed the line to return an empty map to avoid potentially having NullPointerException later
 
 4. AvoidDuplicateLiterals
-    - Location: RouteController.java, line 40
+    - Location: RouteController.java, line 40 (line number is based on before modifying the file)
     - The String literal "deptCode" appears 15 times in this file; the first occurrence is on line 40
+    - Defined a constant instead of using the same string literals repeatedly
 
 5. UseLocaleWithCaseConversions
-    - Location: RouteController.java, line 45
+    - Location: RouteController.java, line 54
     - When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+    - Used Locale.ROOT to ensure that results are consistent regardless of the environment
 
 6. AvoidDuplicateLiterals
-    - Location: RouteController.java, line 46
+    - Location: RouteController.java, line 46 (line number is based on before modifying the file)
     - The String literal "Department Not Found" appears 6 times in this file; the first occurrence is on line 46
+    - Defined a constant instead of using the same string literals repeatedly
 
 7. UseLocaleWithCaseConversions
-    - Location: RouteController.java, line 48
+    - Location: RouteController.java, line 57
     - When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+    - Used Locale.ROOT to ensure that results are consistent regardless of the environment
 
 8. AvoidDuplicateLiterals
-    - Location: RouteController.java, line 74
+    - Location: RouteController.java, line 74 (line number is based on before modifying the file)
     - The String literal "courseCode" appears 10 times in this file; the first occurrence is on line 74
+    - Defined a constant instead of using the same string literals repeatedly
 
 9. AvoidDuplicateLiterals
-    - Location: RouteController.java, line 84
+    - Location: RouteController.java, line 84 (line number is based on before modifying the file)
     - The String literal "Course Not Found" appears 10 times in this file; the first occurrence is on line 84
+    - Defined a constant instead of using the same string literals repeatedly
 
 10. UnusedLocalVariable
-    - Location: RouteController.java, line 292
+    - Location: RouteController.java, 301
     - Avoid unused local variables such as 'requestedCourse'.
+    - Fixing the findCourseTime() method to return the correct value of the course timeslot using the variable requestedCourse resolved this issue.
 
 11. AvoidDuplicateLiterals
-    - Location: RouteController.java, line 428
+    - Location: RouteController.java, line 428 (line number is based on before modifying the file)
     - The String literal "Attributed was updated successfully." appears 4 times in this file; the first occurrence is on line 428
+    - Defined a constant instead of using the same string literals repeatedly
 
 
-<Other bugs found>
+<Other bugs found and fixed>
 
 In Department.java:
 
@@ -68,3 +76,11 @@ In Course.java:
 
 In MyFileDatabase.java:
 1. Line 99, the variable filePath can be set as final because the value should not really change after initialization
+
+In RouteController.java:
+
+1. retrieveDepartment() returning the wrong HttpStatus for the if-else cases (was returning OK when department was not found and NOT_FOUND when department was found)
+2. retrieveCourse() returning HttpStatus.FORBIDDEN when the course is found while it should return OK
+3. getMajorCtFromDept() returning a negated value of the number of majors for the requested department and returning HttpStatus.FORBIDDEN when the department is not found (I think it should be NOT_FOUND)
+4. findCourseTime() returning the string literal "some time " instead of the actual timeslot of the course
+5. handleException() returning HttpStatus.OK when an error has occurred could be misleading; I think it would be better to return HttpStatus.INTERNAL_SERVER_ERROR
