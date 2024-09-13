@@ -50,8 +50,17 @@
 
 In Department.java:
 
-1. Line 37, getNumberOfMajors() method returning a negated value of this.numberOfMajors
-2. Line 46, getDepartmentChair() method not returning the actual value of departmentChair but returning a string literal "this.departmentChair"
-3. Line 68, dropPersonFromMajor() method always decreasing numberOfMajors by one and not checking if it's greater than zero
-4. Line 109, toString() method not returning the actual value of the string representation but returning a string literal "result.toString()"
+1. Line 37, getNumberOfMajors() returning a negated value of this.numberOfMajors
+2. Line 46, getDepartmentChair() not returning the actual value of departmentChair but returning a string literal "this.departmentChair"
+3. Line 68, dropPersonFromMajor() always decreasing numberOfMajors by one and not checking if it's greater than zero
+4. Line 109, toString() not returning the actual value of the string representation but returning a string literal "result.toString()"
+
+In Course.java:
+
+1. Line 26, the constructor initializing enrolledStudentCount to 500 whereas the javadoc comment says the count should start at zero
+2. enrollStudent() always increasing enrolledStudentCount and returning false while it should check if there is space available and return true if student is successfully enrolled and false otherwise
+3. dropStudent() always decreasing enrolledStudentCount and returning false while it should check if a student is enrolled in the course and return true if student is successfully dropped and false otherwise
+4. Line 57, getCourseLocation() returning instructorName instead of courseLocation
+5. Line 62, getInstructorName() returning courseLocation instead of instructorName
+6. Line 104, isCourseFull() having a logic error of incorrectly returning true when the course is not full (enrollmentCapacity > enrolledStudentCount)
 
