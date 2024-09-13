@@ -8,10 +8,12 @@
 2. ConstructorCallsOverridableMethod
     - Location: MyFileDatabase.java, line 26
     - Overridable method called during object construction: MyFileDatabase.deSerializeObjectFromFile()
+    - Changed the deSerializeObjectFromFile() method from public to private to make it not overridable.
 
 3. ReturnEmptyCollectionRatherThanNull
     - Location: MyFileDatabase.java, line 54
     - Return an empty collection rather than null.
+    - Fixed the line to return an empty map to avoid potentially having NullPointerException later
 
 4. AvoidDuplicateLiterals
     - Location: RouteController.java, line 40
@@ -64,3 +66,5 @@ In Course.java:
 5. Line 62, getInstructorName() returning courseLocation instead of instructorName
 6. Line 104, isCourseFull() having a logic error of incorrectly returning true when the course is not full (enrollmentCapacity > enrolledStudentCount)
 
+In MyFileDatabase.java:
+1. Line 99, the variable filePath can be set as final because the value should not really change after initialization

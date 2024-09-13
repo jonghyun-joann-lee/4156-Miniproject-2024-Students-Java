@@ -39,9 +39,9 @@ public class MyFileDatabase {
   /**
    * Deserializes the object from the file and returns the department mapping.
    *
-   * @return the deserialized department mapping
+   * @return the deserialized department mapping or an empty collection if deserialization fails
    */
-  public HashMap<String, Department> deSerializeObjectFromFile() {
+  private HashMap<String, Department> deSerializeObjectFromFile() {
     try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
       Object obj = in.readObject();
       if (obj instanceof HashMap) {
@@ -51,7 +51,7 @@ public class MyFileDatabase {
       }
     } catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();
-      return null;
+      return new HashMap<>();
     }
   }
 
@@ -96,7 +96,7 @@ public class MyFileDatabase {
   /**
    * The path to the file containing the database entries.
    */
-  private String filePath;
+  private final String filePath;
 
   /**
    * The mapping of department names to Department objects.
