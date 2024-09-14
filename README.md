@@ -1,3 +1,11 @@
+# JaCoCo
+
+To run the tests and generate the JaCoCo report, I ran the following commands in the terminal, in order.
+
+`mvn clean test`
+
+`mvn jacoco:report`
+
 # Static Bug Finder
 
 To check for bugs, I used **PMD** as the static bug finder. I used the error-prone and default rulesets, which were configured like below in the pom.xml file.
