@@ -1,15 +1,15 @@
 package dev.coms4156.project.individualproject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
@@ -23,6 +23,9 @@ public class RouteControllerUnitTests {
   /** The test RouteController instance used for testing. */
   public static RouteController testRouteController;
 
+  /**
+   * This sets up the test instances for testing methods in the RouteController class.
+   */
   @BeforeAll
   public static void setupRouteControllerForTesting() {
     // Use real data from data.txt to set up the test instance and disable saving data
@@ -163,7 +166,8 @@ public class RouteControllerUnitTests {
   public void removeMajorFromDeptSuccessTest() {
     ResponseEntity<?> response = testRouteController.removeMajorFromDept("ELEN");
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals("Attribute was updated or is at minimum", response.getBody());  }
+    assertEquals("Attribute was updated or is at minimum", response.getBody());
+  }
 
   @Test
   public void removeMajorFromDeptNotFoundTest() {
@@ -218,14 +222,16 @@ public class RouteControllerUnitTests {
 
   @Test
   public void changeCourseTeacherSuccessTest() {
-    ResponseEntity<?> response = testRouteController.changeCourseTeacher("ELEN", 4830, "Irving Kalet");
+    ResponseEntity<?> response = testRouteController.changeCourseTeacher(
+        "ELEN", 4830, "Irving Kalet");
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals("Attributed was updated successfully.", response.getBody());
   }
 
   @Test
   public void changeCourseTeacherNotFoundTest() {
-    ResponseEntity<?> response = testRouteController.changeCourseTeacher("ELEN", 2222, "Kenneth Shepard");
+    ResponseEntity<?> response = testRouteController.changeCourseTeacher(
+        "ELEN", 2222, "Kenneth Shepard");
     assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     assertEquals("Course Not Found", response.getBody());
   }
