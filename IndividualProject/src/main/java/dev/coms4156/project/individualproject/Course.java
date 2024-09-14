@@ -68,10 +68,14 @@ public class Course implements Serializable {
   }
 
 
-  public int getEnrollmentCapacity() { return this.enrollmentCapacity; }
+  public int getEnrollmentCapacity() {
+    return this.enrollmentCapacity;
+  }
 
 
-  public int getEnrolledStudentCount() { return this.enrolledStudentCount; }
+  public int getEnrolledStudentCount() {
+    return this.enrolledStudentCount;
+  }
 
 
   public String toString() {

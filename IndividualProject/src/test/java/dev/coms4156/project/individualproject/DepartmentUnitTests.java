@@ -22,6 +22,9 @@ public class DepartmentUnitTests {
   public static Department testDepartment;
   public static HashMap<String, Course> testCourses;
 
+  /**
+   * This sets up the test instances for testing methods in the Department class.
+   */
   @BeforeEach
   public void setupDepartmentForTesting() {
     testCourses = new HashMap<>();
@@ -32,7 +35,8 @@ public class DepartmentUnitTests {
 
   @Test
   public void toStringTest() {
-    String expectedResult = "COMS 3251: \nInstructor: Tony Dear; Location: 402 CHANDLER; Time: 1:10-3:40\n";
+    String expectedResult = "COMS 3251: \nInstructor: Tony Dear; Location: 402 CHANDLER;"
+        + " Time: 1:10-3:40\n";
     assertEquals(expectedResult, testDepartment.toString());
   }
 
